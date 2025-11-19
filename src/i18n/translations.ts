@@ -234,7 +234,7 @@ export const translations = {
         whatIsThis: 'O que é isto?',
 
         // Sobre
-        aboutText: '<strong>Remote Freelancer PT</strong> é um simulador open source para freelancers em Portugal que trabalham para empresas remotas. Permite estimar o seu rendimento líquido e impostos a pagar. Mais informações em breve.',
+        aboutText: '<strong>Simulador Freelancer PT</strong> é um simulador open source para freelancers em Portugal que trabalham para empresas remotas. Permite estimar o seu rendimento líquido e impostos a pagar. Mais informações em breve.',
         goToSimulator: 'ir para o simulador',
         contribute: 'contribuir',
         savedSimulations: 'Simulações guardadas',
@@ -462,7 +462,7 @@ export const translations = {
         close: 'Close',
 
         // Form
-        formTitle: 'Remote freelancer from Portugal 🇵🇹',
+        formTitle: 'Simulador Freelancer de Portugal 🇵🇹',
         simulateNetIncome: 'simulate your net income',
         incomePlaceholder: 'Income',
         reset: 'reset',
@@ -474,7 +474,7 @@ export const translations = {
         whatIsThis: 'What is this?',
 
         // About
-        aboutText: '<strong>Remote Freelancer PT</strong> is an open source simulator for freelancers in Portugal working for remote companies. It allows you to estimate your net income and taxes to pay. More information soon.',
+        aboutText: '<strong>Simulador Freelancer PT</strong> is an open source simulator for freelancers in Portugal working for remote companies. It allows you to estimate your net income and taxes to pay. More information soon.',
         goToSimulator: 'go to simulator',
         contribute: 'contribute',
         savedSimulations: 'Saved simulations',

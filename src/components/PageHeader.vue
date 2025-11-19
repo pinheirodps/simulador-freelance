@@ -2,10 +2,10 @@
   <header class="sticky top-0 z-50 bg-defaultbg">
     <nav class="flex justify-between items-center px-5">
       <div class="flex items-center justify-start gap-5">
-        <router-link class="flex items-center justify-center space-x-3" to="/">
+        <!-- <router-link class="flex items-center justify-center space-x-3" to="/">
           <img src="@/assets/world.svg" class="h-7" />
           <span> {{ t.simulator }} </span>
-        </router-link>
+        </router-link> -->
         <router-link
           v-if="store.hasStoredSimulations"
           data-cy="simulations-menu"
