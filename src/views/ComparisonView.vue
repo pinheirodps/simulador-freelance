@@ -20,7 +20,7 @@
     </div>
 
     <!-- Formulário de entrada -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8 print:hidden">
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
       <h2 class="text-xl font-semibold mb-4">{{ t.simulationParams }}</h2>
       
       <div class="space-y-6">

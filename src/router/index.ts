@@ -7,13 +7,13 @@ import Comparison from "@/views/ComparisonView.vue";
 const routes = [
   {
     path: "/",
-    name: "Simulator",
-    component: Simulator,
-  },
-  {
-    path: "/comparison",
     name: "Comparison",
     component: Comparison,
+  },
+  {
+    path: "/simulator",
+    name: "Simulator",
+    component: Simulator,
   },
   {
     path: "/about",
