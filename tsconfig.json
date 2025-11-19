@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "types": ["vitest/globals"],
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@cy/*": ["cypress/*"],
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+  },
+  "include": ["vite.config.*", "src/**/*.ts", "src/**/*.vue"],
+}
