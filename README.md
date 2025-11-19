@@ -1,8 +1,13 @@
-# Remote Freelancer from Portugal 🇵🇹
+# Freelance Simulator - Portugal 🇵🇹
 
-Simulate your earnings (year, month or day) and breakdown how much taxes you're going to pay as a freelancer working from Portugal.
+Simulate your earnings and compare different fiscal regimes (Sole Trader vs Single-Person Company / Unipessoal) for freelancers working from Portugal.
 
-live at https://freelancept.fmacedo.com/
+**Key Features:**
+- Detailed income simulation (Year, Month, Day)
+- **New:** Comprehensive comparison between Sole Trader (Trabalhador Independente) and Single-Person Company (Unipessoal)
+- Liquidity analysis including business expenses
+- Detailed tax breakdown (IRS, Social Security, VAT)
+- Visual charts and summary tables
 
 ![preview](img/preview.gif)
 
@@ -60,14 +65,14 @@ run as dev (with auto-reload):
 docker compose up --build -V
 ```
 
-build a production image (image named as `remotefreelancept:latest`) (listening on `:80`):
+build a production image (image named as `simulador-freelance:latest`) (listening on `:80`):
 
 ```
-docker build -t remotefreelancept:latest .
+docker build -t simulador-freelance:latest .
 ```
 
 Run tests (vitest):
 
 ```
-docker build -t remotefreelancept:test --target=test .
+docker build -t simulador-freelance:test --target=test .
 ```
