@@ -3,7 +3,7 @@ services:
     build:
       context: ./
       target: dev
-    image: remotefreelancept:dev
+    image: simulador-freelance:dev
     volumes:
        - .:/build-stage
        - /build-stage/node_modules

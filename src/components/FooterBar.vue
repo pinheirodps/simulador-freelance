@@ -49,7 +49,7 @@
               v-if="breakpoint.smAndDown"
               className="cursor-pointer text-center text-blue-500 p-3 rounded-full shadow-sm hover:shadow-xl"
               target="_blank"
-              href="https://github.com/franciscobmacedo/remotefreelancept"
+              href="https://github.com/pinheirodps/simulador-freelance"
             >
               <img src="@/assets/github-mark.svg" />
             </a>
