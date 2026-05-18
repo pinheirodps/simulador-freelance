@@ -106,7 +106,7 @@ export const translations = {
         unipessoalNote: 'Unipessoal: O faturamento da empresa (não o seu salário)',
         tablesNote: 'As tabelas abaixo mostram os valores na frequência que você escolheu',
         attention: 'Atenção',
-        expensesWarning: 'Se rendimento > 29.748€/ano, você DEVE justificar 15% em despesas (no e-fatura, marcar "No âmbito da atividade profissional"). Se não justificar, o valor em falta é adicionado ao rendimento tributável.',
+        expensesWarning: 'Se rendimento > 29.748€/ano, você DEVE justificar 15% em despesas (no e-fatura, marcar "No âmbito da atividade profissional"). Se não justificar, o valor em falta será adicionado ao rendimento tributável.',
 
         // Comparação
         detailedComparison: 'Comparação Detalhada de Regimes',
@@ -142,15 +142,15 @@ export const translations = {
         lessBureaucracy: 'Menos burocracia: Regime simplificado até 200k€/ano',
         rvBest: 'Recibos Verdes: Melhor para rendimentos médios (30k-80k). Coeficiente 0.75 (25% desconto), isenção SS no 1º ano, regime simplificado até 200k€.',
         rvAdditional: 'Descontos adicionais: 1º ano (50% do rendimento tributável), 2º ano (25%).',
-        ctiBest: 'CTI (Contrato de Trabalho): Melhor para segurança e estabilidade. Inclui subsídio de férias e Natal (14 meses), proteção laboral, subsídio de desemprego. SS do trabalhador (11%) e SS do empregador (23.75%).',
+        ctiBest: 'CTI (Contrato de Trabalho): Melhor para segurança e estabilidade. Inclui subsídio de férias e Natal (14 meses), proteção laboral, subsídio de desemprego. SS do trabalhador e descontos variam conforme a tabela.',
         ctiDeductions: 'Deduções específicas variam conforme estado civil, titulares e dependentes.',
-        unipessoalBest: 'Unipessoal: Geralmente vantajoso para rendimentos elevados (>80k) ou se tiver muitas despesas dedutíveis. Permite separar património e acumular lucros. Para rendimentos médios, Recibos Verdes costumam ganhar devido ao coeficiente de 0.75 (desconto automático de 25%).',
+        unipessoalBest: 'Unipessoal: Geralmente vantajoso para rendimentos elevados (>80k) ou se tiver muitas despesas dedutíveis. Permite separar património e acumular lucros. Para rendimentos médios, avaliar caso a caso.',
         unipessoalOptions: 'Opções: Retirar salário (IRS progressivo + SS) ou Distribuir lucros (IRC + IRS 28%).',
         considerAsLiquidity: 'Considerar como liquidez (Benefícios/Ajudas de Custo)?',
         liquidity: 'Liquidez',
         expensesBenefits: 'Despesas (Benefícios)',
         legalWarning: 'Aviso Legal',
-        legalWarningText: 'Estes cálculos são estimativas baseadas na legislação de 2025. Consulte um contabilista certificado para aconselhamento fiscal específico à sua situação.',
+        legalWarningText: 'Estes cálculos são estimativas baseadas na legislação de 2026. Consulte um contabilista certificado para aconselhamento fiscal específico à sua situação.',
 
         // Footer
         footerNotes: 'notas',
@@ -162,19 +162,19 @@ export const translations = {
         showIncomePer: 'Mostrar rendimento por',
         incomeTaxYear: 'Ano fiscal',
         nrMonthsSimulate: 'Nº de meses a simular',
-        nrMonthsSimulateTooltip: 'Numa empresa portuguesa, recebe-se 2 meses extra por ano (subsídio de férias e Natal). Se quiser comparar o seu salário remoto com uma empresa local, deve alterar este campo para 14 meses.',
+        nrMonthsSimulateTooltip: 'Numa empresa portuguesa, recebe-se 2 meses extra por ano (subsídio de férias e Natal). Se quiser comparar o seu salário remoto com uma empresa local, deve alterar o número de meses.',
         nrDaysOff: 'Número de dias de folga num ano',
-        nrDaysOffTooltip: 'Defina o número de dias de folga não remunerados ou dias de férias não remunerados que planeia tirar durante o ano. Estes dias serão deduzidos do cálculo do rendimento anual. Esta simulação assume que um ano tem {days} dias úteis.',
+        nrDaysOffTooltip: 'Defina o número de dias de folga não remunerados ou dias de férias não remunerados que planeia tirar durante o ano. Estes dias serão deduzidos do cálculo do rendimento.',
         adjustSS: 'Ajustar contribuição para Segurança Social',
-        adjustSSTooltip: 'Pode ajustar o seu rendimento para cálculos da Segurança Social com um mínimo de -25% e um máximo de +25%. Isto afetará provavelmente a sua pensão de reforma. Clique para ver mais.',
+        adjustSSTooltip: 'Pode ajustar o seu rendimento para cálculos da Segurança Social com um mínimo de -25% e um máximo de +25%. Isto afetará provavelmente a sua pensão de reforma. Clique para mais informações.',
         eligibleYouthIRS: 'É elegível para IRS Jovem?',
         eligibleYouthIRSTooltip: 'Pode obter um desconto no seu IRS se tiver menos de 35 anos e ensino superior. Clique para ver mais.',
         first12Months: 'Está nos primeiros 12 meses de atividade?',
         first12MonthsTooltip: 'Está isento de pagar Segurança Social nos primeiros 12 meses como trabalhador independente em Portugal. Clique para ver mais.',
         firstFiscalYear: 'Está no seu primeiro ano fiscal de atividade?',
-        firstFiscalYearTooltip: 'Obtém um desconto de 50% no seu rendimento tributável (IRS) no primeiro ano de atividade. Isto pode ser menos de 12 meses se iniciar a atividade após janeiro. Clique para ver mais.',
+        firstFiscalYearTooltip: 'Obtém um desconto de 50% no seu rendimento tributável (IRS) no primeiro ano de atividade. Isto pode ser menos de 12 meses se iniciar a atividade após janeiro. Clique para mais informações.',
         secondFiscalYear: 'Está no seu segundo ano fiscal de atividade?',
-        secondFiscalYearTooltip: 'Obtém um desconto de 25% no seu rendimento tributável (IRS) no segundo ano de atividade. Clique para ver mais.',
+        secondFiscalYearTooltip: 'Obtém um desconto de 25% no seu rendimento tributável (IRS) no segundo ano fiscal de atividade. Clique para ver mais.',
         eligibleNHR: 'É elegível para RNH (Residente Não Habitual)?',
         eligibleNHRTooltip: '<b>RNH</b> (residentes não habituais) têm uma taxa fixa de IRS de {tax}. Clique para mais informações.',
         justifyExpenses: 'Quanto consegue justificar como despesas profissionais?',
@@ -234,7 +234,7 @@ export const translations = {
         whatIsThis: 'O que é isto?',
 
         // Sobre
-        aboutText: '<strong>Simulador Freelancer PT</strong> é um simulador open source para freelancers em Portugal que trabalham para empresas remotas. Permite estimar o seu rendimento líquido e impostos a pagar. Mais informações em breve.',
+        aboutText: '<strong>Simulador Freelancer PT</strong> é um simulador open source para freelancers em Portugal que trabalham para empresas remotas. Permite estimar o seu rendimento líquido e comparar regimes fiscais.',
         goToSimulator: 'ir para o simulador',
         contribute: 'contribuir',
         savedSimulations: 'Simulações guardadas',
@@ -343,7 +343,7 @@ export const translations = {
         importantNote: 'The entered value represents different things in each regime:',
         rvNote: 'Green Receipts: Your annual billing (what you receive from clients)',
         ctiNote: 'Employment: Your gross annual salary including subsidies (14 months)',
-        unipessoalNote: 'Single-Person Company: The company\'s billing (not your salary)',
+        unipessoalNote: 'Single-Person Company: The company's billing (not your salary)',
         tablesNote: 'The tables below show values in the frequency you chose',
         attention: 'Attention',
         expensesWarning: 'If income > 29,748€/year, you MUST justify 15% in expenses (in e-fatura, mark "Within professional activity"). If not justified, the missing amount is added to taxable income.',
@@ -382,15 +382,15 @@ export const translations = {
         lessBureaucracy: 'Less bureaucracy: Simplified regime up to 200k€/year',
         rvBest: 'Green Receipts: Best for medium incomes (30k-80k). Coefficient 0.75 (25% discount), SS exemption in 1st year, simplified regime up to 200k€.',
         rvAdditional: 'Additional discounts: 1st year (50% of taxable income), 2nd year (25%).',
-        ctiBest: 'Employment Contract: Best for security and stability. Includes vacation and Christmas subsidy (14 months), labor protection, unemployment benefit. Employee SS (11%) and employer SS (23.75%).',
+        ctiBest: 'Employment Contract: Best for security and stability. Includes vacation and Christmas subsidy (14 months), labor protection, unemployment benefit. Employee SS (11%) and employer contributions vary.',
         ctiDeductions: 'Specific deductions vary according to marital status, holders and dependents.',
-        unipessoalBest: 'Single-Person Company: Generally advantageous for high income (>80k) or if you have many deductible expenses. Allows asset separation and profit accumulation. For average income, Green Receipts often win due to the 0.75 coefficient (automatic 25% deduction).',
+        unipessoalBest: 'Single-Person Company: Generally advantageous for high income (>80k) or if you have many deductible expenses. Allows asset separation and profit accumulation. For average incomes, evaluate case by case.',
         unipessoalOptions: 'Options: Withdraw salary (progressive IRS + SS) or Distribute profits (IRC + 28% IRS).',
         considerAsLiquidity: 'Consider as liquidity (Benefits/Perks)?',
         liquidity: 'Liquidity',
         expensesBenefits: 'Expenses (Benefits)',
         legalWarning: 'Legal Disclaimer',
-        legalWarningText: 'These calculations are estimates based on 2025 legislation. Consult a certified accountant for tax advice specific to your situation.',
+        legalWarningText: 'These calculations are estimates based on 2026 legislation. Consult a certified accountant for tax advice specific to your situation.',
 
         // Footer
         footerNotes: 'notes',
@@ -402,87 +402,4 @@ export const translations = {
         showIncomePer: 'Show income per',
         incomeTaxYear: 'Income tax year',
         nrMonthsSimulate: 'Nr. of months to simulate your earnings',
-        nrMonthsSimulateTooltip: 'In a portuguese company, you can get payed 2 extra months per year (for holidays and christmas). If you want to compare your remote salary with some local company, you should change this field to 14 months.',
-        nrDaysOff: 'Number of days off taken in a year',
-        nrDaysOffTooltip: 'Set the number of unpaid days off or unpaid vacation days you plan to take during the year. These days will be deducted from the annual income calculation. This simulation assumes that one year consists of {days} working days.',
-        adjustSS: 'Adjust your contribution to social security',
-        adjustSSTooltip: 'You can adjust your income for social security tax calculations with a minimum of -25% and a maximum of +25%. This will probably afect your retirement pension. Click to see more.',
-        eligibleYouthIRS: 'Are you eligible for Youth IRS?',
-        eligibleYouthIRSTooltip: 'You can get a discount on your IRS tax if you are under 35 years old and have higher education. Click to see more.',
-        first12Months: 'Are you within the first 12 months of starting your activity?',
-        first12MonthsTooltip: 'You are exempt from paying social security in your first 12 months as a freelancer in Portugal. Click to see more.',
-        firstFiscalYear: 'Are you in your first fiscal year of activity?',
-        firstFiscalYearTooltip: 'You get a 50% discount on your taxable income (IRS), on your first year of activity. This could be less than 12 months if you start your activity after the month January. Click to see more.',
-        secondFiscalYear: 'Are you in your second fiscal year of activity?',
-        secondFiscalYearTooltip: 'You get a 25% discount on your taxable income (IRS), on your second year of activity. Click to see more.',
-        eligibleNHR: 'Are you eligible to be in the NHR/RNH?',
-        eligibleNHRTooltip: '<b>NHR</b> (non-habitual residents) have a fixed IRS tax of {tax}. click for more information.',
-        justifyExpenses: 'How much can you justify as professional related expenses?',
-        maxRequired: 'the maximum required is',
-        netIncome: 'Net income',
-        taxes: 'Taxes',
-
-        // Simulator Table
-        colTitle: 'Title',
-        rowGrossIncome: 'Gross income',
-        irsEstimation: 'IRS estimation',
-        taxRankLevel: 'tax rank level',
-        outOf: 'out of',
-        showTaxRanksTable: 'Show tax ranks table',
-        specificDeductions: 'Specific deductions',
-        expenses: 'Expenses',
-        youthIrsDiscount: 'Youth IRS Discount',
-        taxableIncome: 'Taxable income',
-        taxableIncomeAvg: 'Taxable income for average tax',
-        taxableIncomeNormal: 'Taxable income for normal tax',
-
-        // Tax Ranks
-        taxRanksTitle: 'Tax Ranks',
-        closeModal: 'Close modal',
-        yourTaxableIncomeInLevel: 'Your taxable income ({income}) is in level',
-        biggerThan: ' (bigger than {value}',
-        andLowerThan: ' and lower than {value})',
-        lowerThan: ' (lower than {value})',
-        level: 'Level',
-        minimum: 'Minimum',
-        maximum: 'Maximum',
-        normalTax: 'Normal Tax',
-        averageTax: 'Average Tax',
-
-        // Chart
-        chartGrossIncome: 'gross income',
-        chartNetIncome: 'Net Income',
-        chartIrs: 'IRS',
-        chartSs: 'SS',
-
-        // Save Simulation
-        saveSimulationTitle: 'Save this simulation',
-        simulationNamePlaceholder: 'Simulation name',
-        save: 'Save',
-        close: 'Close',
-
-        // Form
-        formTitle: 'Simulador Freelancer de Portugal 🇵🇹',
-        simulateNetIncome: 'simulate your net income',
-        incomePlaceholder: 'Income',
-        reset: 'reset',
-        share: 'share',
-        saveAction: 'save',
-        linkCopied: 'sharable link copied to clipboard',
-        simulationSaved: 'Simulation saved',
-        example: 'Ex',
-        whatIsThis: 'What is this?',
-
-        // About
-        aboutText: '<strong>Simulador Freelancer PT</strong> is an open source simulator for freelancers in Portugal working for remote companies. It allows you to estimate your net income and taxes to pay. More information soon.',
-        goToSimulator: 'go to simulator',
-        contribute: 'contribute',
-        savedSimulations: 'Saved simulations',
-    },
-};
-
-export type Language = 'pt' | 'en';
-
-export function useTranslation(lang: Language = 'pt') {
-    return translations[lang];
-}
+        nrMonthsSimulateTooltip: 'In a portuguese company, you can get payed 2 extra months per year (for holidays and christmas). If you want to compare your remote salary with some local compan[...]

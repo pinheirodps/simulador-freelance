@@ -9,10 +9,12 @@ import {
 } from "@/typings";
 import { asCurrency, generateUUID } from "@/utils.js";
 import { updateUrlQuery, clearUrlQuery } from "@/router";
+import { calculateRecibosVerdes } from "@/calculators/recibosVerdes";
+import { profile2026 } from "@/taxProfiles";
 
 export const YEAR_BUSINESS_DAYS = 248;
 //export const MONTH_BUSINESS_DAYS = 22; // No longer used by this simulator, only year business days are taken into account
-export const SUPPORTED_TAX_RANK_YEARS = ([2023, 2024, 2025]).sort((a, b) => b - a);
+export const SUPPORTED_TAX_RANK_YEARS = ([2023, 2024, 2025, 2026]).sort((a, b) => b - a);
 const SIMULATIONS_LOCAL_STORE_KEY = "net_income_simulations";
 
 interface TaxesState {
@@ -107,11 +109,24 @@ const useTaxesStore = defineStore({
         { id: 8, min: 44987, max: 83696, normalTax: 0.446, averageTax: 0.3493 },
         { id: 9, min: 83696, normalTax: 0.48, max: null, averageTax: null },
       ],
+      2026: [
+        // Placeholder values for 2026 — please validate with official sources
+        { id: 1, min: 0, max: 8500, normalTax: 0.125, averageTax: 0.125 },
+        { id: 2, min: 8500, max: 12500, normalTax: 0.16, averageTax: 0.1368 },
+        { id: 3, min: 12500, max: 17500, normalTax: 0.215, averageTax: 0.1598 },
+        { id: 4, min: 17500, max: 23000, normalTax: 0.244, averageTax: 0.179 },
+        { id: 5, min: 23000, max: 29000, normalTax: 0.314, averageTax: 0.2079 },
+        { id: 6, min: 29000, max: 43000, normalTax: 0.349, averageTax: 0.2528 },
+        { id: 7, min: 43000, max: 47000, normalTax: 0.431, averageTax: 0.2661 },
+        { id: 8, min: 47000, max: 88000, normalTax: 0.446, averageTax: 0.3493 },
+        { id: 9, min: 88000, normalTax: 0.48, max: null, averageTax: null },
+      ],
     },
     iasPerYear: {
       2023: 480.43,
       2024: 509.26,
       2025: 522.50,
+      2026: 535.00, // placeholder — validar
     },
     rnh: false,
     rnhTax: 0.2,
@@ -188,29 +203,27 @@ const useTaxesStore = defineStore({
       }
       return result;
     },
-    ssPay() {
-      if (this.ssFirstYear) {
-        return {
-          year: 0,
-          month: 0,
-          day: 0,
-        };
-      }
-      // We first calculate 70% of the gross income, with the discount applied,
-      // then we compare it to the maximum SS income, and we take the minimum
-      const monthSS =
-        this.ssTax *
-        Math.min(
-          this.maxSsIncome,
-          this.grossIncome.month * 0.7 * (1 + this.ssDiscount),
-        );
-      const yearSSPay = Math.max(12 * monthSS, 20 * 12);
-      return {
-        year: yearSSPay,
-        month: Math.max(monthSS, 20),
-        day: yearSSPay / (YEAR_BUSINESS_DAYS - this.nrDaysOff),
-      };
+
+    // Central calculation for Recibos Verdes; store delegates to calculator
+    calcRecibos() {
+      return calculateRecibosVerdes(this.grossIncome, profile2026, {
+        ssFirstYear: this.ssFirstYear,
+        ssDiscount: this.ssDiscount,
+        currentIas: this.currentIas,
+        expenses: this.expenses,
+        maxExpensesTaxPercent: this.maxExpensesTax,
+        firstYear: this.firstYear,
+        secondYear: this.secondYear,
+        youthIrsDiscount: this.youthIrsDiscount,
+        nrMonthsDisplay: this.nrMonthsDisplay,
+        nrDaysOff: this.nrDaysOff,
+      });
     },
+
+    ssPay() {
+      return this.calcRecibos.ssPay;
+    },
+
     specificDeductions() {
       return Math.max(
         4104,
@@ -316,25 +329,7 @@ const useTaxesStore = defineStore({
       return this.taxableIncome - this.taxIncomeAvg;
     },
     irsPay() {
-      if (this.taxRankAvg === undefined) {
-        return {};
-      }
-      let yearIRS: number;
-      if (this.rnh) {
-        yearIRS = this.taxableIncome * this.rnhTax;
-      } else {
-        yearIRS =
-          this.taxIncomeAvg * this.taxRankAvg.averageTax +
-          this.taxIncomeNormal * this.taxRank.normalTax;
-      }
-
-      const monthIRS = Math.max(yearIRS / this.nrMonthsDisplay, 0);
-      const yearIrsPay = Math.max(yearIRS, 0);
-      return {
-        year: yearIrsPay,
-        month: monthIRS,
-        day: yearIrsPay / (YEAR_BUSINESS_DAYS - this.nrDaysOff),
-      };
+      return this.calcRecibos.irsPay;
     },
     taxesDisplay() {
       return asCurrency(
@@ -342,13 +337,7 @@ const useTaxesStore = defineStore({
       );
     },
     netIncome() {
-      const monthIncome = this.grossIncome.month - this.irsPay.month - this.ssPay.month;
-      const yearIncome = this.grossIncome.year - this.irsPay.year - this.ssPay.year;
-      return {
-        year: yearIncome,
-        month: monthIncome,
-        day: yearIncome / (YEAR_BUSINESS_DAYS - this.nrDaysOff),
-      };
+      return this.calcRecibos.netIncome;
     },
     irsFrequency() {
       return this.irsPay[this.displayFrequency];
