@@ -12,7 +12,7 @@ import { updateUrlQuery, clearUrlQuery } from "@/router";
 
 export const YEAR_BUSINESS_DAYS = 248;
 //export const MONTH_BUSINESS_DAYS = 22; // No longer used by this simulator, only year business days are taken into account
-export const SUPPORTED_TAX_RANK_YEARS = ([2023, 2024, 2025]).sort((a, b) => b - a);
+export const SUPPORTED_TAX_RANK_YEARS = ([2023, 2024, 2025, 2026]).sort((a, b) => b - a);
 const SIMULATIONS_LOCAL_STORE_KEY = "net_income_simulations";
 
 interface TaxesState {
@@ -107,11 +107,24 @@ const useTaxesStore = defineStore({
         { id: 8, min: 44987, max: 83696, normalTax: 0.446, averageTax: 0.3493 },
         { id: 9, min: 83696, normalTax: 0.48, max: null, averageTax: null },
       ],
+      2026: [
+        // Placeholder values for 2026 — please validate with official sources
+        { id: 1, min: 0, max: 8500, normalTax: 0.125, averageTax: 0.125 },
+        { id: 2, min: 8500, max: 12500, normalTax: 0.16, averageTax: 0.1368 },
+        { id: 3, min: 12500, max: 17500, normalTax: 0.215, averageTax: 0.1598 },
+        { id: 4, min: 17500, max: 23000, normalTax: 0.244, averageTax: 0.179 },
+        { id: 5, min: 23000, max: 29000, normalTax: 0.314, averageTax: 0.2079 },
+        { id: 6, min: 29000, max: 43000, normalTax: 0.349, averageTax: 0.2528 },
+        { id: 7, min: 43000, max: 47000, normalTax: 0.431, averageTax: 0.2661 },
+        { id: 8, min: 47000, max: 88000, normalTax: 0.446, averageTax: 0.3493 },
+        { id: 9, min: 88000, normalTax: 0.48, max: null, averageTax: null },
+      ],
     },
     iasPerYear: {
       2023: 480.43,
       2024: 509.26,
       2025: 522.50,
+      2026: 535.00, // placeholder — validar
     },
     rnh: false,
     rnhTax: 0.2,
