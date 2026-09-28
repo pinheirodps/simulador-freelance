@@ -25,9 +25,10 @@ const IRC_RATE_LOW = 0.17; // 17% até 50.000€
 const IRC_RATE_HIGH = 0.21; // 21% acima de 50.000€
 const IRC_THRESHOLD = 50000;
 
-// Salário mínimo nacional 2024/2025
+// Salário mínimo nacional 2024/2025/2026
 const MINIMUM_WAGE_2024 = 820; // €/mês
-const MINIMUM_WAGE_2025 = 870; // €/mês (atualizado em 2025)
+const MINIMUM_WAGE_2025 = 870; // €/mês
+const MINIMUM_WAGE_2026 = 920; // €/mês (atualizado para 2026)
 
 // Deduções específicas por estado civil e dependentes (2025)
 const SPECIFIC_DEDUCTIONS = {
@@ -152,6 +153,15 @@ const useComparisonStore = defineStore({
     },
     maxSsIncome(): number {
       return 12 * this.currentIas;
+    },
+    currentMinimumWage(): number {
+      if (this.currentTaxRankYear >= 2026) {
+        return MINIMUM_WAGE_2026;
+      }
+      if (this.currentTaxRankYear >= 2025) {
+        return MINIMUM_WAGE_2025;
+      }
+      return MINIMUM_WAGE_2024;
     },
     // Cálculo para Recibos Verdes (usa a store existente)
     recibosVerdes(): ContractComparison {
@@ -369,7 +379,7 @@ const useComparisonStore = defineStore({
       }
 
       const grossIncome = this.grossIncome;
-      const minimumWage = this.currentTaxRankYear >= 2025 ? MINIMUM_WAGE_2025 : MINIMUM_WAGE_2024;
+      const minimumWage = this.currentMinimumWage;
 
       if (this.unipessoalDistributeLucros) {
         // OPÇÃO 1: Distribuição de Lucros
@@ -671,7 +681,7 @@ const useComparisonStore = defineStore({
       if (!this.income) return;
 
       const grossIncomeYear = this.grossIncome.year;
-      const minimumWage = this.currentTaxRankYear >= 2025 ? MINIMUM_WAGE_2025 : MINIMUM_WAGE_2024;
+      const minimumWage = this.currentMinimumWage;
       const minSalary = minimumWage * 12;
 
       // Se o rendimento for menor que o salário mínimo anual, não há o que otimizar

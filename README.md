@@ -3,8 +3,8 @@
 Simulate your earnings and compare different fiscal regimes (Sole Trader vs Single-Person Company / Unipessoal) for freelancers working from Portugal.
 
 **Key Features:**
-- Detailed income simulation (Year, Month, Day)
-- **New:** Comprehensive comparison between Sole Trader (Trabalhador Independente) and Single-Person Company (Unipessoal)
+- Detailed income simulation (Year, Month, Day) with **2026 tax tables, updated IAS (535.06€) and SMN (920€)**
+- Comprehensive comparison between Sole Trader (Trabalhador Independente), Employment Contract (CTI), and Single-Person Company (Unipessoal)
 - Liquidity analysis including business expenses
 - Detailed tax breakdown (IRS, Social Security, VAT)
 - Visual charts and summary tables

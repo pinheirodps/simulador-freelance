@@ -6,7 +6,7 @@ export default defineConfig({
   base: "/simulador-freelance/",
   plugins: [vue()],
   server: {
-    port: process.env.PORT || null
+    port: process.env.PORT ? parseInt(process.env.PORT, 10) : undefined,
   },
   resolve: {
     alias: {
