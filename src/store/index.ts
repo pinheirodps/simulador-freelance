@@ -110,23 +110,22 @@ const useTaxesStore = defineStore({
         { id: 9, min: 83696, normalTax: 0.48, max: null, averageTax: null },
       ],
       2026: [
-        // Placeholder values for 2026 — please validate with official sources
-        { id: 1, min: 0, max: 8500, normalTax: 0.125, averageTax: 0.125 },
-        { id: 2, min: 8500, max: 12500, normalTax: 0.16, averageTax: 0.1368 },
-        { id: 3, min: 12500, max: 17500, normalTax: 0.215, averageTax: 0.1598 },
-        { id: 4, min: 17500, max: 23000, normalTax: 0.244, averageTax: 0.179 },
-        { id: 5, min: 23000, max: 29000, normalTax: 0.314, averageTax: 0.2079 },
-        { id: 6, min: 29000, max: 43000, normalTax: 0.349, averageTax: 0.2528 },
-        { id: 7, min: 43000, max: 47000, normalTax: 0.431, averageTax: 0.2661 },
-        { id: 8, min: 47000, max: 88000, normalTax: 0.446, averageTax: 0.3493 },
-        { id: 9, min: 88000, normalTax: 0.48, max: null, averageTax: null },
+        { id: 1, min: 0, max: 8244, normalTax: 0.125, averageTax: 0.125 },
+        { id: 2, min: 8244, max: 12440, normalTax: 0.16, averageTax: 0.1368 },
+        { id: 3, min: 12440, max: 17629, normalTax: 0.215, averageTax: 0.1598 },
+        { id: 4, min: 17629, max: 22819, normalTax: 0.244, averageTax: 0.179 },
+        { id: 5, min: 22819, max: 29053, normalTax: 0.314, averageTax: 0.2079 },
+        { id: 6, min: 29053, max: 42586, normalTax: 0.349, averageTax: 0.2528 },
+        { id: 7, min: 42586, max: 46022, normalTax: 0.431, averageTax: 0.2661 },
+        { id: 8, min: 46022, max: 85621, normalTax: 0.446, averageTax: 0.3493 },
+        { id: 9, min: 85621, normalTax: 0.48, max: null, averageTax: null },
       ],
     },
     iasPerYear: {
       2023: 480.43,
       2024: 509.26,
       2025: 522.50,
-      2026: 535.00, // placeholder — validar
+      2026: 535.06,
     },
     rnh: false,
     rnhTax: 0.2,
@@ -218,7 +217,18 @@ const useTaxesStore = defineStore({
 
     // Central calculation for Recibos Verdes; store delegates to calculator
     calcRecibos() {
-      return calculateRecibosVerdes(this.grossIncome, profile2026, {
+      const year = this.currentTaxRankYear;
+      const brackets = this.taxRanks[year]?.map((r: TaxRank) => ({
+        min: r.min,
+        max: r.max,
+        rate: r.normalTax,
+      })) || profile2026.irsBrackets;
+      const profile = {
+        ...profile2026,
+        year,
+        irsBrackets: brackets,
+      };
+      return calculateRecibosVerdes(this.grossIncome, profile, {
         ssFirstYear: this.ssFirstYear,
         ssDiscount: this.ssDiscount,
         currentIas: this.currentIas,

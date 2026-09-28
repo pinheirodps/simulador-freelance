@@ -29,10 +29,17 @@ export function calculateUnipessoal(
   const monthGross = clamp(grossIncome.month || yearGross / 12);
 
   const remunerationType = options.remunerationType || 'profitDistribution';
-  // partnerSalary: annual amount. If not provided and salary mode, assume 60% of gross or 1/2 as heuristic
+  const minimumWage = options.minimumWage ?? profile?.minimumWage ?? (profile?.year >= 2026 ? 920 : profile?.year >= 2025 ? 870 : 820);
+  const minSalary = minimumWage * 12;
+
+  // partnerSalary: annual amount. If not provided and salary mode, assume 60% of gross or minSalary
   let partnerSalary = typeof options.partnerSalary === 'number' ? options.partnerSalary : 0;
-  if (remunerationType === 'salary' && partnerSalary === 0) {
-    partnerSalary = Math.round(yearGross * 0.6);
+  if (remunerationType === 'profitDistribution') {
+    if (partnerSalary === 0) {
+      partnerSalary = minSalary;
+    }
+  } else if (remunerationType === 'salary' && partnerSalary === 0) {
+    partnerSalary = Math.max(minSalary, Math.round(yearGross * 0.6));
   }
 
   const additionalExpenses = options.additionalExpenses || {} as AdditionalExpenses;
