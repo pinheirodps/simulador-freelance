@@ -12,7 +12,7 @@ import { updateUrlQuery, clearUrlQuery } from "@/router";
 
 export const YEAR_BUSINESS_DAYS = 248;
 //export const MONTH_BUSINESS_DAYS = 22; // No longer used by this simulator, only year business days are taken into account
-export const SUPPORTED_TAX_RANK_YEARS = ([2023, 2024, 2025]).sort((a, b) => b - a);
+export const SUPPORTED_TAX_RANK_YEARS = ([2023, 2024, 2025, 2026]).sort((a, b) => b - a);
 const SIMULATIONS_LOCAL_STORE_KEY = "net_income_simulations";
 
 interface TaxesState {
@@ -107,11 +107,23 @@ const useTaxesStore = defineStore({
         { id: 8, min: 44987, max: 83696, normalTax: 0.446, averageTax: 0.3493 },
         { id: 9, min: 83696, normalTax: 0.48, max: null, averageTax: null },
       ],
+      2026: [
+        { id: 1, min: 0, max: 8244, normalTax: 0.125, averageTax: 0.125 },
+        { id: 2, min: 8244, max: 12440, normalTax: 0.16, averageTax: 0.1368 },
+        { id: 3, min: 12440, max: 17629, normalTax: 0.215, averageTax: 0.1598 },
+        { id: 4, min: 17629, max: 22819, normalTax: 0.244, averageTax: 0.179 },
+        { id: 5, min: 22819, max: 29053, normalTax: 0.314, averageTax: 0.2079 },
+        { id: 6, min: 29053, max: 42586, normalTax: 0.349, averageTax: 0.2528 },
+        { id: 7, min: 42586, max: 46022, normalTax: 0.431, averageTax: 0.2661 },
+        { id: 8, min: 46022, max: 85621, normalTax: 0.446, averageTax: 0.3493 },
+        { id: 9, min: 85621, normalTax: 0.48, max: null, averageTax: null },
+      ],
     },
     iasPerYear: {
       2023: 480.43,
       2024: 509.26,
       2025: 522.50,
+      2026: 535.06,
     },
     rnh: false,
     rnhTax: 0.2,
@@ -139,6 +151,18 @@ const useTaxesStore = defineStore({
         5: { maxDiscountPercentage: 0.25, maxDiscountIasMultiplier: 10 },
       },
       2025: {
+        1: { maxDiscountPercentage: 1, maxDiscountIasMultiplier: 55 },
+        2: { maxDiscountPercentage: 0.75, maxDiscountIasMultiplier: 55 },
+        3: { maxDiscountPercentage: 0.75, maxDiscountIasMultiplier: 55 },
+        4: { maxDiscountPercentage: 0.75, maxDiscountIasMultiplier: 55 },
+        5: { maxDiscountPercentage: 0.50, maxDiscountIasMultiplier: 55 },
+        6: { maxDiscountPercentage: 0.50, maxDiscountIasMultiplier: 55 },
+        7: { maxDiscountPercentage: 0.50, maxDiscountIasMultiplier: 55 },
+        8: { maxDiscountPercentage: 0.25, maxDiscountIasMultiplier: 55 },
+        9: { maxDiscountPercentage: 0.25, maxDiscountIasMultiplier: 55 },
+        10: { maxDiscountPercentage: 0.25, maxDiscountIasMultiplier: 55 },
+      },
+      2026: {
         1: { maxDiscountPercentage: 1, maxDiscountIasMultiplier: 55 },
         2: { maxDiscountPercentage: 0.75, maxDiscountIasMultiplier: 55 },
         3: { maxDiscountPercentage: 0.75, maxDiscountIasMultiplier: 55 },
@@ -259,7 +283,7 @@ const useTaxesStore = defineStore({
       return Math.min(maxDiscount, maxDiscountIas);
     },
     youthIrsRange() {
-      return this.currentTaxRankYear === 2025 ? 10 : 5;
+      return this.currentTaxRankYear >= 2025 ? 10 : 5;
     },
     taxRank(): TaxRank {
       return this.taxRanks[this.currentTaxRankYear].filter(
@@ -641,7 +665,7 @@ const useTaxesStore = defineStore({
       this.updateStoredSimulations();
     },
     isYearOfYouthIrsValid (value: number)  {
-      const validRange = this.currentTaxRankYear === 2025 ? 10 : 5;
+      const validRange = this.currentTaxRankYear >= 2025 ? 10 : 5;
       return value >= 1 && value <= validRange;
     },
     reset() {

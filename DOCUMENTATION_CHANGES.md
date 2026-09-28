@@ -45,3 +45,13 @@
 
 ### Consistency
 - **Summary Card:** Updated `getEstimatedNetIncome` to return `finalNetIncome` (after expenses) instead of raw `netIncome`, ensuring the "Summary" card matches the "Detailed Table" bottom line.
+
+## 4. 2026 Fiscal Year Update
+
+### Tax Brackets & Values
+- **Supported Years:** Added `2026` to `SUPPORTED_TAX_RANK_YEARS` and set it as the new default simulation year.
+- **IRS 2026 Brackets:** Updated all 9 IRS brackets and average rates for 2026 in accordance with the Portuguese State Budget (OE 2026) updates (~2.3% threshold adjustment).
+- **IAS 2026:** Updated IAS to `535.06€` (raising the Social Security cap and Youth IRS limits accordingly).
+- **Minimum Wage (SMN 2026):** Updated to `920€/mês` (based on the Tripartite Agreement for Income and Wage Valorization), replacing the 2025 base (870€) and 2024 base (820€) via a dedicated reactive `currentMinimumWage` getter.
+- **IRS Jovem:** Expanded the 10-year discount model to 2026 and future years (handling `>= 2025` dynamically), retaining the 55 IAS ceiling.
+- **SSR/Non-Browser Resilience:** Updated `router/index.ts` to gracefully fallback to `createMemoryHistory()` when `window` is undefined in server or testing environments.

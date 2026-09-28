@@ -150,7 +150,7 @@ export const translations = {
         liquidity: 'Liquidez',
         expensesBenefits: 'Despesas (Benefícios)',
         legalWarning: 'Aviso Legal',
-        legalWarningText: 'Estes cálculos são estimativas baseadas na legislação de 2025. Consulte um contabilista certificado para aconselhamento fiscal específico à sua situação.',
+        legalWarningText: 'Estes cálculos são estimativas baseadas na legislação fiscal portuguesa de 2026. Consulte um contabilista certificado para aconselhamento fiscal específico à sua situação.',
 
         // Footer
         footerNotes: 'notas',
@@ -390,7 +390,7 @@ export const translations = {
         liquidity: 'Liquidity',
         expensesBenefits: 'Expenses (Benefits)',
         legalWarning: 'Legal Disclaimer',
-        legalWarningText: 'These calculations are estimates based on 2025 legislation. Consult a certified accountant for tax advice specific to your situation.',
+        legalWarningText: 'These calculations are estimates based on 2026 Portuguese tax legislation. Consult a certified accountant for tax advice specific to your situation.',
 
         // Footer
         footerNotes: 'notes',
